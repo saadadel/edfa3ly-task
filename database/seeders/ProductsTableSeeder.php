@@ -33,8 +33,10 @@ class ProductsTableSeeder extends Seeder
             ]
         ];
 
+        $id = 1;
         foreach ($products as $product) {
             $product = Product::create([
+                'id' => $id,
                 'name' => $product['name'],
                 'price' => $product['price']
             ]);
@@ -43,6 +45,7 @@ class ProductsTableSeeder extends Seeder
                 $product->sale_id = 1;
                 $product->save();
             }
+            $id++;
         }
 
     }
