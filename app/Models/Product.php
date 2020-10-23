@@ -22,6 +22,16 @@ class Product extends Model
         return $this->sale()->where('starts_at', '<=', today())->where('ends_at', '>=', today());
     }
 
+    public function buyProductOffer()
+    {
+        return $this->hasMany(Offer::class, 'buy_product');
+    }
+
+    public function offerPorductOffer()
+    {
+        return $this->hasMany(Offer::class, 'offer_product');
+    }
+
     public function getPriceAttribute($price)
     {
         $currency = app('request')->header('currency', 'USD');
