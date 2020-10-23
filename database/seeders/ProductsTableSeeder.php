@@ -34,10 +34,16 @@ class ProductsTableSeeder extends Seeder
         ];
 
         foreach ($products as $product) {
-            Product::create([
+            $product = Product::create([
                 'name' => $product['name'],
                 'price' => $product['price']
             ]);
+            if($product->name == 'Shoes')
+            {
+                $product->sale_id = 1;
+                $product->save();
+            }
         }
+
     }
 }

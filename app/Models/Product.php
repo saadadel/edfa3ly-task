@@ -10,7 +10,17 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price'];
+    protected $fillable = ['name', 'price', 'sale_id'];
+
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class);
+    }
+
+    public function currenctSale()
+    {
+        return $this->sale()->where('starts_at', '<=', today())->where('ends_at', '>=', today());
+    }
 
     public function getPriceAttribute($price)
     {
