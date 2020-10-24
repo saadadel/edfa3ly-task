@@ -24,7 +24,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => 14.99
             ],
             [
-                'name' => 'Jaket',
+                'name' => 'Jacket',
                 'price' => 19.99
             ],
             [

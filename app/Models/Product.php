@@ -14,7 +14,7 @@ class Product extends Model
 
     public function sale()
     {
-        return $this->belongsTo(Sale::class);
+        return $this->belongsTo(Sale::class, 'sale_id');
     }
 
     public function currenctSale()
@@ -34,11 +34,11 @@ class Product extends Model
 
     public function getPriceAttribute($price)
     {
-        $currency = app('request')->header('currency', 'USD');
+        $currency = request()->header('currency', 'USD');
  
-        if($currency->code != 'USD')
+        if($currency != 'USD')
         {
-            $rate = Swap::latest('USD/' . $currency->code);
+            $rate = Swap::latest('USD/' . $currency);
 
             $price *= $rate->getValue();
         }

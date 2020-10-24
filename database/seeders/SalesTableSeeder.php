@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Sale;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class SalesTableSeeder extends Seeder
@@ -14,10 +15,10 @@ class SalesTableSeeder extends Seeder
      */
     public function run()
     {
-        Sale::make([
+        Sale::create([
             'id' => 1,
-            'starts_at' => '23-10-2020',
-            'ends_at' => '23-10-2022',
+            'starts_at' => Carbon::create(2020, 10, 23),
+            'ends_at' => Carbon::create(2022, 10, 23),
             'percentage' => 10.00
         ]);
     }
